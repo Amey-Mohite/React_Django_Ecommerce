@@ -6,6 +6,8 @@ from base.models import Product,Review
 from base.serializer import ProductSerializer
 from rest_framework import status
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
+import dropbox
+from django.conf import settings
 
 
 @api_view(['GET'])
@@ -98,6 +100,21 @@ def uploadImage(request):
     product.image = request.FILES.get('image')
     product.save()
     return Response("Image Uploaded")
+
+
+# @api_view(['POST'])
+# def uploadImage(request):
+#     data = request.data
+#     product_id = data['product_id']
+#     product = Product.objects.get(_id=product_id)
+
+#     if 'image' in request.FILES:
+#         file_path = f'/https://www.dropbox.com/home/Apps/proshop-amey1/image-bucket/{request.FILES.get("image")}'  # Modify as per your Dropbox structure
+#         product.image = file_path
+#         product.save()
+#         return Response("Image Uploaded")
+#     return Response("No Image Found", status=400)
+
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])

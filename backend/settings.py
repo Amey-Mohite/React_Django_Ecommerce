@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+from google.oauth2 import service_account
 from pathlib import Path
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -141,7 +141,7 @@ WSGI_APPLICATION = "backend.wsgi.application"
 # DATABASES = {
 #     "default": {
 #         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": "ecommerce_db",
+#         "NAME": "proshop",
 #         'USER':"postgres",
 #         'PASSWORD':'qwerty',
 #         'HOST':'localhost',
@@ -150,15 +150,26 @@ WSGI_APPLICATION = "backend.wsgi.application"
 # }
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "ecommerce_db",
-        'USER':"ameym",
-        'PASSWORD':os.environ.get('DB_PASS'),
-        'HOST':'ecommerce-identifier.c9m5vxaffapu.us-east-1.rds.amazonaws.com',
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME':'sppbwxsk',
+        'USER' : 'sppbwxsk',
+        'PASSWORD': 'BhzVquqckuEN-jwI9x1kHiUGCx3XYTZc',#os.environ.get('DB_PASS'),
+        'HOST':'lallah.db.elephantsql.com',
         'PORT':'5432'
     }
 }
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "ecommerce_db",
+#         'USER':"ameym",
+#         'PASSWORD':os.environ.get('DB_PASS'),
+#         'HOST':'ecommerce-identifier.c9m5vxaffapu.us-east-1.rds.amazonaws.com',
+#         'PORT':'5432'
+#     }
+# }
 
 
 
@@ -198,8 +209,11 @@ STATIC_URL = "/static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
+# MEDIA_ROOT = BASE_DIR / 'static/images'
 MEDIA_ROOT = BASE_DIR / 'static/images'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+
 
 
 MEDIA_URL = '/images/'
@@ -211,13 +225,15 @@ STATICFILES_DIRS = [ # we can configure multiple static files.
 
 # DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AWS_QUERYSTRING_AUTH = False
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = 'ecommerce-bucket1'
-AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+# AWS_QUERYSTRING_AUTH = False
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+# AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+# AWS_STORAGE_BUCKET_NAME = 'ecommerce-bucket1'
+# AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 
 
 if os.getcwd() == '/app':
     DEBUG = False
+    
+    
