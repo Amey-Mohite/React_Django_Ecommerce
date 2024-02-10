@@ -6,8 +6,6 @@ from base.models import Product,Review
 from base.serializer import ProductSerializer
 from rest_framework import status
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
-import dropbox
-from django.conf import settings
 
 
 @api_view(['GET'])
